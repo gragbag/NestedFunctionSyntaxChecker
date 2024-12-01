@@ -2,6 +2,7 @@ Objective:
 The goal of this project is to build a syntax checker that validates nested function calls in a
 simple programming language. The syntax checker will ensure that function calls are
 properly nested and that arguments passed in each function call are valid.
+
 Project Scope:
 1. Function Declaration: Functions are declared with a return type, function name,
 parameters, and body. The syntax checker will ensure that functions are properly defined
@@ -10,17 +11,21 @@ and invoked.
 f(g(h(x))) ) are syntactically correct.
 3. Parameter Validation: The syntax checker will ensure that the arguments passed to each
 function match the expected types and number of parameters.
+
 Example of Input Program:
+
 int f(int a) {
-return a + 1;
+  return a + 1;
 }
 int g(int b) {
-return f(b) * 2;
+  return f(b) * 2;
 }
 int h(int c) {
-return g(f(c));
+  return g(f(c));
 }
+
 int result = h(5);
+
 Grammar Definition:
 Here is a context-free grammar (CFG) that describes the syntax for nested function calls,
 function declarations, and function invocation.
@@ -39,6 +44,7 @@ Expr -> 'var' | 'num' | FunctionCall
 FunctionCall -> FunctionName '(' ArgList ')' ';'
 ArgList -> Expr | Expr ',' ArgList | ε
 FunctionName -> 'var'
+
 Breakdown of Grammar:
 1. Program: A program consists of function declarations and function calls.
 2. FunctionDecl: Represents a function declaration, which includes the function name,
@@ -49,24 +55,24 @@ parameters, return type, and function body.
 as arguments.
 6. ArgList: Represents a list of arguments passed to a function, which may include nested
 function calls.
+
 List of Terminals:
 1. Keywords:
-o int
-o float
-o void
+int
+float
+void
 2. Operators:
-o = (assignment operator)
-o , (comma to separate parameters or arguments)
-o +, * (arithmetic operators)
+= (assignment operator)
+, (comma to separate parameters or arguments)
++, * (arithmetic operators)
 3. Punctuation:
-o {, } (braces for blocks of code)
-o (, ) (parentheses for function parameters and function calls)
-o ; (statement terminator)
+{, } (braces for blocks of code)
+(, ) (parentheses for function parameters and function calls)
+; (statement terminator)
 4. Literals:
-o Identifiers (for variable names and function names): represented as var,
-FunctionName.
-o Numeric literals: represented as num (for integers and floating-point
-numbers).
+Identifiers (for variable names and function names): represented as var, FunctionName.
+Numeric literals: represented as num (for integers and floating-point numbers).
+
 List of Non-Terminals (Variables):
 1. Program: Represents the entire program, which consists of function declarations
 and function calls.
